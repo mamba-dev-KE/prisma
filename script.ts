@@ -5,30 +5,39 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 export async function main() {
-	const posts = await prisma.user
-		.findFirst({
-			where: {
-				email: {
-					contains: "mamba",
+	// find all users
+	const users = await prisma.user.findMany();
+
+	console.dir(users, { depth: Infinity });
+
+	// find all posts
+	const posts = await prisma.post.findMany();
+
+	console.dir(posts);
+
+	// create new prisma record
+
+	const newPost = await prisma.post
+		.create({
+			data: {
+				title: "redux",
+				content: "redux toolkit",
+				author: {
+					connectOrCreate: {
+						create: {
+							email: "sabre-dev@prisma.com",
+							name: "sabre-dev",
+						},
+						where: {
+							email: "sabre-dev@prisma.com",
+						},
+					},
 				},
 			},
 		})
-		.posts({
-			include: { author: true },
-		});
+		.catch((error) => console.error(error.message));
 
-	console.dir(posts, { depth: Infinity });
-
-	// create new prisma record
-	const newPost = await prisma.post.create({
-		data: {
-			title: "Prisma article 2",
-			content: "what a great article!",
-			authorId: 1,
-		},
-	});
-
-	// console.dir(newPost, { depth: Infinity });
+	console.dir(newPost, { depth: Infinity });
 }
 
 main()
