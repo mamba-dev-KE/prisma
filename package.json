@@ -6,7 +6,8 @@
 	"author": "Joseph Maramba <josephmaramba50@gmail.com>",
 	"license": "MIT",
 	"scripts": {
-		"dev": "nodemon server.ts",
+		"dev-rest": "nodemon rest-api.ts",
+		"dev-gql": "nodemon graphql-api.ts",
 		"db-migrate": "yarn prisma migrate dev",
 		"studio": "yarn prisma studio",
 		"db": "yarn db-migrate && studio"
@@ -18,9 +19,17 @@
 		"nodemon": "^2.0.19",
 		"prisma": "^4.1.0",
 		"ts-node": "^10.9.1",
+		"typegraphql-prisma": "^0.21.1",
 		"typescript": "^4.7.4"
 	},
 	"dependencies": {
-		"express": "^4.18.1"
+		"@types/graphql-fields": "^1.3.4",
+		"apollo-server": "^3.10.0",
+		"class-validator": "^0.13.2",
+		"express": "^4.18.1",
+		"graphql": "^15.3.0",
+		"graphql-fields": "^2.0.3",
+		"reflect-metadata": "^0.1.13",
+		"type-graphql": "^1.1.1"
 	}
 }
