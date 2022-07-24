@@ -4,7 +4,7 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-async function main() {
+export async function main() {
 	const posts = await prisma.user
 		.findFirst({
 			where: {
@@ -20,6 +20,15 @@ async function main() {
 	console.dir(posts, { depth: Infinity });
 
 	// create new prisma record
+	const newPost = await prisma.post.create({
+		data: {
+			title: "Prisma article 2",
+			content: "what a great article!",
+			authorId: 1,
+		},
+	});
+
+	// console.dir(newPost, { depth: Infinity });
 }
 
 main()

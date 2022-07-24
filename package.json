@@ -1,23 +1,20 @@
 {
-  "name": "prisma",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview",
-    "db-migrate": "yarn prisma migrate dev",
-    "studio": "yarn prisma studio",
-    "db": "yarn db-migrate && studio"
-  },
-  "devDependencies": {
-    "@types/node": "^18.0.6",
-    "prisma": "^4.1.0",
-    "typescript": "^4.6.4",
-    "vite": "^3.0.0"
-  },
-  "dependencies": {
-    "@prisma/client": "4.1.0"
-  }
+	"name": "prisma",
+	"version": "1.0.0",
+	"main": "index.js",
+	"repository": "git@github.com:mamba-dev-KE/prisma.git",
+	"author": "Joseph Maramba <josephmaramba50@gmail.com>",
+	"license": "MIT",
+	"scripts": {
+		"db-migrate": "yarn prisma migrate dev",
+		"studio": "yarn prisma studio",
+		"db": "yarn db-migrate && studio"
+	},
+	"devDependencies": {
+		"@prisma/client": "^4.1.0",
+		"@types/node": "^18.0.6",
+		"prisma": "^4.1.0",
+		"ts-node": "^10.9.1",
+		"typescript": "^4.7.4"
+	}
 }
